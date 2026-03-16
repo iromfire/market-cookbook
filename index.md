@@ -4,22 +4,22 @@ layout: home
 
 hero:
   name: "Market Cookbook"
-  text: "Best practice for developers"
-  tagline: My great project tagline
+  text: "Как мы пишем код"
+  tagline: Попытка собрать полезные практики и подходы в одном месте
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Посмотреть
+      link: /forms
+
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Codestyle
+    details: Как мы пишем код правила, нейминг и структура.
+
+  - title: Recipes
+    details: Готовые решения для типовых задач из проектов.
+
+  - title: Architecture
+    details: Подходы к структуре проектов, слоям и организации кода.
 ---
 
