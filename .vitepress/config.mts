@@ -8,12 +8,22 @@ export default defineConfig({
       { text: "Главная", link: "/" },
       { text: "Документация", link: "/forms" },
     ],
-
     sidebar: [
       {
         text: "Codestyle",
-        items: [{ text: "Формы", link: "/forms" }],
+        items: [
+          { text: "Формы", link: "/form" },
+          { text: "API", link: "/api" },
+        ],
       },
     ],
+    docFooter: {
+      prev: "Предыдущая",
+      next: "Следующая",
+    },
+
+    outline: {
+      label: "Содержание",
+    },
   },
 });
