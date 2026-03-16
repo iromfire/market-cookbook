@@ -1,5 +1,7 @@
 # Формы
 
+---
+
 ✅ Используй типизированные формы
 
 ```ts
@@ -61,14 +63,87 @@ searchControl = new FormControl("", { nonNullable: true });
 
 ---
 
-✅ Используй `(ngSubmit)` с `type="submit`
+✅ Используй одно обновление формы через patchValue
+
+```ts
+form.patchValue({
+  title: article.title,
+  description: article.description,
+});
+```
+
+❌ Не обновляй каждый контрол отдельно
+
+```ts
+form.controls.title.setValue(article.title);
+form.controls.description.setValue(article.description);
+```
+
+---
+
+✅ Используй `(ngSubmit)` с `type="submit"`
 
 ❌ Не используй `(click)` с `type="button"`
 
 ---
 
-✅ Если надо реализовать `ControlValueAccessor` используй `AbstractRtsControl` из `@rts/uikit`
+✅ Используй `getRawValue()` для получения значения формы с `disabled` полями
 
 ---
 
-✅ Используй `getRawValue()` для получения значения формы с `disabled` полями
+✅ Если надо реализовать `ControlValueAccessor` используй `AbstractRtsControl` из `@rts/uikit`
+
+❌ Не передавай контрол через `input`
+
+---
+
+✅ Используй uikit для вертски форм
+
+```html
+<rts-cdk-form-field>
+  <rts-cdk-label>Электронная почта для уведомлений</rts-cdk-label>
+  <rts-input
+    [formControl]="organizationForm.controls.email"
+    rtsInputEmailAddress
+    [required]="true"
+  />
+  <rts-cdk-error>
+    {{ makeEmailErrorMessage(organizationForm.controls.email) }}
+  </rts-cdk-error>
+</rts-cdk-form-field>
+```
+
+❌ Не пиши маркер обязательности (`*`) руками. Укажи `[required]="true"` на контроле
+
+---
+
+✅ Используй утилиты
+
+- `withRequiredIf `
+
+```ts
+snils: this._formBuilder.control(organization.snils, {
+  validators: withRequiredIf(
+    organizationType === OrganizationTypeEnum.PhysicalPerson,
+    SNILS_MIN_LENGTH_VALIDATOR,
+  ),
+});
+```
+
+- `isControlRequired`
+- `touchAndValidityAll` – используется перед отправкой формы
+- Если у контрола может быть несколько видов ошибок создай утилиту `makeSomeControlErrorMessage`
+
+```ts
+export const makeEmailErrorMessage = (control: FormControl): string | null => {
+  if (control.hasError("required")) {
+    return "Укажите адрес электронной почты. Пример: example@company.ru";
+  }
+
+  if (control.hasError("pattern")) {
+    return "Пожалуйста, введите корректный адрес электронной почты. Пример: example@company.ru";
+  }
+
+  return null;
+};
+```

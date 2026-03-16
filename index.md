@@ -5,12 +5,11 @@ layout: home
 hero:
   name: "Market Cookbook"
   text: "Как мы пишем код"
-  tagline: Попытка собрать полезные практики и подходы в одном месте
+  tagline: Попытка собрать всё в одном месте
   actions:
     - theme: brand
       text: Посмотреть
       link: /forms
-
 
 features:
   - title: Codestyle
@@ -22,4 +21,3 @@ features:
   - title: Architecture
     details: Подходы к структуре проектов, слоям и организации кода.
 ---
-
