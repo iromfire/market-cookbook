@@ -99,7 +99,7 @@ form.controls.description.setValue(article.description);
 
 ---
 
-✅ Используй uikit для вертски форм
+✅ Используй uikit для верстки форм
 
 ```html
 <rts-cdk-form-field>
