@@ -12,12 +12,14 @@ type ArticleForm = FormGroup<{
 
 @Injectable()
 export class ArticleFormService extends AbstractFormService<ArticleForm, void> {
-  this._form = this._formBuilder.group({
-    title: this._formBuilder.nonNullable.control(''),
-    description: this._formBuilder.nonNullable.control(''),
-  });
+  init(): ArticleForm {
+    this._form = this._formBuilder.group({
+      title: this._formBuilder.nonNullable.control(""),
+      description: this._formBuilder.nonNullable.control(""),
+    });
 
-  return this._form;
+    return this._form;
+  }
 }
 ```
 
