@@ -10,14 +10,4 @@ hero:
     - theme: brand
       text: Посмотреть
       link: /file-structure
-
-features:
-  - title: Codestyle
-    details: Как мы пишем код правила, нейминг и структура.
-
-  - title: Recipes
-    details: Готовые решения для типовых задач из проектов.
-
-  - title: Architecture
-    details: Подходы к структуре проектов, слоям и организации кода.
 ---
