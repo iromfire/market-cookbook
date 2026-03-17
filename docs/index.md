@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Посмотреть
-      link: /forms
+      link: /file-structure
 
 features:
   - title: Codestyle

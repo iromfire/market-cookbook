@@ -7,14 +7,18 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: "Главная", link: "/" },
-      { text: "Документация", link: "/forms" },
+      { text: "Документация", link: "/file-structure" },
     ],
     sidebar: [
       {
-        text: "Codestyle",
         items: [
+          { text: "Файловая структура", link: "/file-structure" },
+          { text: "Компонент", link: "/component" },
           { text: "Формы", link: "/forms" },
+          { text: "Состояние", link: "/state-management" },
+          { text: "Use Case", link: "/use-case" },
           { text: "API", link: "/api" },
+          { text: "Code Style", link: "/code-style" },
         ],
       },
     ],
