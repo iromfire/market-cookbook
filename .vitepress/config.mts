@@ -6,7 +6,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: "Главная", link: "/" },
-      { text: "Документация", link: "/forms" },
+      { text: "Документация", link: "/form" },
     ],
     sidebar: [
       {
