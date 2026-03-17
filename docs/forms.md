@@ -1,4 +1,4 @@
-# Формы
+# Формы <Badge type="warning" text="Не подтверждено" /> <Badge type="info" text="Новое" />
 
 ---
 

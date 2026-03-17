@@ -1,4 +1,4 @@
-# Файловая структура
+# Файловая структура <Badge type="warning" text="Не подтверждено" /> <Badge type="info" text="Новое" />
 
 Следуем принципам:
 
@@ -40,7 +40,7 @@
 ❌ Избегай лишней и глубокой вложенности. [Angular Style Guide — Organize by feature areas](https://angular.dev/style-guide#organize-your-project-by-feature-areas)
 
 Храни связанные файлы **вместе по фиче**, а не по типу.  
-Не разделяйте код по папкам `components/`, `services/` и т.п., если это не улучшает читаемость.
+Не разделяй код по папкам `components/`, `services/` и т.п., если это не улучшает читаемость.
 
 ### 📦 libs
 
