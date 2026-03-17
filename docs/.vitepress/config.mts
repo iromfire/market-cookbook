@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  base: "market-cookbook",
+  base: "/market-cookbook/",
   title: "Market Cookbook",
   description: "Как мы пишем код",
   themeConfig: {
