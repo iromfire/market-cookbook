@@ -1,5 +1,12 @@
 # Файловая структура <Badge type="warning" text="Не подтверждено" /> <Badge type="info" text="Новое" />
 
+::: warning TODO
+
+- Правила импортов до index.ts
+- Структура внутри `features/<name>`
+
+:::
+
 Следуем принципам:
 
 - **LIFT** [Angular Style Guide — LIFT](https://v17.angular.io/guide/styleguide#lift)
@@ -102,4 +109,4 @@
 npx tsx scripts/replace-imports.ts src/app/<папка>
 ```
 
-После этого `index.ts` удалите вручную
+После этого удалите неиспользуемые `index.ts`вручную

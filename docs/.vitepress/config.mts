@@ -18,6 +18,7 @@ export default defineConfig({
           { text: "Состояние", link: "/state-management" },
           { text: "Use Case", link: "/use-case" },
           { text: "API", link: "/api" },
+          { text: "Стили", link: "/styling" },
           { text: "Code Style", link: "/code-style" },
         ],
       },
