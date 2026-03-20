@@ -60,7 +60,7 @@ export class IsCertificateValidUseCase implements UseCase<
 }
 ```
 
-Лучше (domain util / сервис)
+Лучше domain util (или сервис, в зависимости от задачи)
 
 ```ts
 export const isCertificateValid = (cert: Certificate): boolean =>
