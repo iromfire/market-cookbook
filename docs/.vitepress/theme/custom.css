@@ -1,0 +1,131 @@
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    120deg,
+    #42a5f5 0%,
+    #5c6cff 38%,
+    #8b5cf6 68%,
+    #ec4899 100%
+  );
+}
+
+.VPHero .name {
+  line-height: 1.08 !important;
+}
+
+.mc-home {
+  padding: 8px 0 48px;
+}
+
+.mc-home__band {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 28px;
+}
+
+.mc-home__pill {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: var(--vp-c-bg-soft);
+  padding: 10px 16px;
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.mc-home__card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(92, 108, 255, 0.1), transparent 36%),
+    var(--vp-c-bg-soft);
+  padding: 28px;
+}
+
+.mc-home__content h2 {
+  margin: 0 0 18px;
+  border-top: 0;
+  padding-top: 0;
+  font-size: 56px;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+  color: var(--vp-c-text-1);
+}
+
+.mc-home__content p {
+  margin: 0;
+  max-width: 980px;
+  color: var(--vp-c-text-2);
+  font-size: 18px;
+  line-height: 1.95;
+}
+
+.mc-home__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.mc-home__stat {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 20px;
+  background: var(--vp-c-bg-elv);
+  padding: 16px 16px 14px;
+}
+
+.mc-home__stat strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--vp-c-text-1);
+  font-size: 1.1rem;
+  line-height: 1.15;
+}
+
+.mc-home__stat span {
+  display: block;
+  color: var(--vp-c-text-2);
+  font-size: 0.99rem;
+  line-height: 1.55;
+}
+
+.dark .mc-home__pill {
+  background: rgba(30, 41, 59, 0.72);
+}
+
+.dark .mc-home__card {
+  background:
+    radial-gradient(circle at top left, rgba(92, 108, 255, 0.14), transparent 36%),
+    rgba(17, 24, 39, 0.82);
+}
+
+.dark .mc-home__stat {
+  background: rgba(15, 23, 42, 0.72);
+}
+
+@media (max-width: 960px) {
+  .mc-home__stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .mc-home {
+    padding-bottom: 40px;
+  }
+
+  .mc-home__card {
+    border-radius: 24px;
+    padding: 20px 18px 18px;
+  }
+
+  .mc-home__content h2 {
+    font-size: 2.75rem;
+  }
+
+  .mc-home__content p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+}
