@@ -1,4 +1,4 @@
-# Файловая структура <Badge type="warning" text="Не подтверждено" /> <Badge type="info" text="Новое" />
+# Файловая структура <Badge type="warning" text="Не подтверждено командой" /> <Badge type="tip" text="Новое" />
 
 ::: warning TODO
 
