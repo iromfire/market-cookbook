@@ -1,4 +1,4 @@
-# 🎨 Стили <Badge type="warning" text="Не подтверждено командой" /> <Badge type="tip" text="Новое" />
+# 🎨 Стили <Badge type="warning" text="Не подтверждено командой" />
 
 ## Переменные
 
