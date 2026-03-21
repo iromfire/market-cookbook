@@ -1,4 +1,4 @@
-# Компонент <Badge type="warning" text="Не подтверждено командой" />
+# TypeScript class <Badge type="warning" text="Не подтверждено командой" />
 
 Эта страница содержит лучшие практики и рекомендации по написанию TypeScript-классов в Angular компонентах.
 
@@ -65,7 +65,7 @@ selected = model(false);
 - `computed()` и `effect()`
 - `viewChild()` / `viewChildren()`
 - `takeUntilDestroyed()`
-- сигналы и observable как основной инструмент
+- `signal` и `Observable` как основной инструмент
 
 ## Интерфейсы lifecycle
 

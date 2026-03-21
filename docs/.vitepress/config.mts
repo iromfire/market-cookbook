@@ -19,7 +19,7 @@ export default defineConfig({
             items: [
               { text: "Шаблон", link: "/component-template" },
               { text: "Стили", link: "/component-styling" },
-              { text: "Typescript", link: "/component-typescript" },
+              { text: "TypeScript class", link: "/component-typescript-class" },
             ],
           },
           { text: "Формы", link: "/forms" },
@@ -27,6 +27,7 @@ export default defineConfig({
           { text: "Use Case", link: "/use-case" },
           { text: "API", link: "/api" },
           { text: "Code Style", link: "/code-style" },
+          { text: "DI", link: "/code-style" },
         ],
       },
     ],
