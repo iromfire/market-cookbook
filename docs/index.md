@@ -16,4 +16,4 @@ hero:
       link: https://github.com/iromfire/market-cookbook
 ---
 
-<HomePage />
+[//]: # "<HomePage />"
