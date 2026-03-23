@@ -1,0 +1,23 @@
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    120deg,
+    #42a5f5 0%,
+    #6366f1 25%,
+    #8b5cf6 50%,
+    #ec4899 70%,
+    #f43f5e 85%,
+    #dc2626 100%
+  );
+}
+
+.mc-home__card {
+  background: radial-gradient(
+    circle at 60% bottom,
+    oklch(59.91% 0.239 8.14) 20%,
+    oklch(53.18% 0.28 296.97) 100%
+  );
+  border-radius: 20px;
+  padding: 20px;
+  color: var(--vp-button-brand-text);
+}
