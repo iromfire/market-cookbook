@@ -1,7 +1,11 @@
 import { defineConfig } from "vitepress";
 
+const base = "/market-cookbook/";
+
 export default defineConfig({
-  base: "/market-cookbook/",
+  lang: "ru-RU",
+  base: base,
+  head: [["link", { rel: "icon", href: `${base}favicon.svg` }]],
   title: "Market Cookbook",
   description: "Как мы пишем код",
   themeConfig: {
