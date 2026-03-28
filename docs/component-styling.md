@@ -1,4 +1,4 @@
-# 🎨 Стили <Badge type="warning" text="Не подтверждено командой" />
+# Стили <Badge type="warning" text="Не подтверждено командой" />
 
 ## Переменные
 
@@ -49,16 +49,38 @@
 
 ## Angular-специфика
 
-✅ Используй style binding
+✅ Используй class + style binding
 
 ```html
+<div [class.error]="hasError"></div>
 <div [style.width.px]="200"></div>
 ```
 
 ❌ Не используй
 
 ```html
+<div [ngClass]="{ error: hasError }"></div>
 <div [ngStyle]="{ width: '200px' }"></div>
+```
+
+✅ Стилизуй host, не создавай внутри ненужную обертку
+
+```css
+:host {
+  padding: 16px;
+}
+```
+
+❌
+
+```html
+<div class="card">...</div>
+```
+
+```css
+.card {
+  padding: 16px;
+}
 ```
 
 ✅ Выноси в компонент дублирующиеся стили
@@ -84,4 +106,4 @@
 ✅ Если нужны исключения:
 
 - вынеси в глобальные стили
-- или уточни у дизайнера
+- или обсуди с дизайнером, почему в этом месте сделали иначе, чем обычно
