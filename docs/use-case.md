@@ -43,18 +43,22 @@ export class SignContractUseCase implements UseCase<
   private readonly _contractRepo = inject(ContractRepository);
   private readonly _cryptoService = inject(CryptoService);
 
-  execute({ contractId, cert }: { contractId: string; cert: Certificate }) {
-    const contract = this._contractRepo.getById(contractId);
+  execute(params: { contractId: string; cert: Certificate }) {
+    const { contractId, cert } = params;
 
-    if (!isCertificateValid(cert)) {
-      throw new Error("Invalid certificate");
-    }
+    return this._contractRepo.getById(contractId).pipe(
+      switchMap((contract) => {
+        if (!isCertificateValid(cert)) {
+          return throwError(() => new Error("Invalid certificate"));
+        }
 
-    const signedContract = this._cryptoService.sign(contract, cert);
-
-    this._contractRepo.save(signedContract);
-
-    return { contractId };
+        return this._cryptoService.sign(contract, cert);
+      }),
+      switchMap((signedContract) => {
+        return this._contractRepo.save(signedContract);
+      }),
+      map(() => ({ contractId })),
+    );
   }
 }
 ```
