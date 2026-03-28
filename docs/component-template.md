@@ -54,24 +54,6 @@
 </div>
 ```
 
-## Условный рендеринг
-
-✅ Управляй отображением на уровне родителя
-
-```html
-@if (user) {
-<app-profile />
-}
-```
-
-❌ Не перекладывай это на дочерний
-
-```html
-@if (user) {
-<div>Component html...</div>
-}
-```
-
 ## Простота шаблона
 
 ✅ Шаблон только про отображение
@@ -107,6 +89,54 @@
 <div *ngFor="let item of items">{{ item.name }}</div>
 ```
 
+## Условный рендеринг
+
+✅ Управляй отображением на уровне родителя
+
+```html
+@if (user) {
+<app-profile />
+}
+```
+
+❌ Не перекладывай это на дочерний
+
+```html
+@if (user) {
+<div>Component html...</div>
+}
+```
+
+## Локальные переменные
+
+✅ Сохраняй в локальные переменные через `@if (...; as ...)`
+
+<!-- prettier-ignore-start -->
+```html
+@if (order().customer.primaryAddress; as address) {
+<div>{{ address.city }}</div>
+<div>{{ address.street }}</div>
+<div>{{ address.postalCode }}</div>
+
+@if (address.country === 'DE') {
+<span>🇩🇪 Germany</span>
+  } 
+}
+```
+<!-- prettier-ignore-end -->
+
+❌ Не дублируй доступ к одним и тем же данным
+
+```html
+<div>{{ order().customer.primaryAddress.city }}</div>
+<div>{{ order().customer.primaryAddress.street }}</div>
+<div>{{ order().customer.primaryAddress.postalCode }}</div>
+
+@if (order().customer.primaryAddress.country === 'DE') {
+<span>🇩🇪 Germany</span>
+}
+```
+
 ## Ссылки vs кнопки
 
 ✅ Используй `<a>` для навигации (даже если выглядит как кнопка)
@@ -133,22 +163,4 @@
 
 ```html
 <a rtsDarkLink (click)="onLogout()"> Выйти </a>
-```
-
-## Локальные переменные
-
-✅ Сохраняй в локальные переменные через `@if (...; as ...)`
-
-```html
-@if (user.profile; as profile) {
-<div>{{ profile.name }}</div>
-<div>{{ profile.email }}</div>
-}
-```
-
-❌ Не дёргай одно и то же выражение
-
-```html
-<div>{{ user.profile.name }}</div>
-<div>{{ user.profile.email }}</div>
 ```

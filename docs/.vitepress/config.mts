@@ -19,13 +19,14 @@ export default defineConfig({
           { text: "Файловая структура", link: "/file-structure" },
           {
             text: "Компонент",
-            collapsed: true,
+            collapsed: false,
             items: [
               { text: "Шаблон", link: "/component-template" },
               { text: "Стили", link: "/component-styling" },
               { text: "TypeScript class", link: "/component-typescript-class" },
             ],
           },
+          { text: "Сервис", link: "/service" },
           { text: "Формы", link: "/forms" },
           { text: "Состояние", link: "/state-management" },
           { text: "Use Case", link: "/use-case" },
