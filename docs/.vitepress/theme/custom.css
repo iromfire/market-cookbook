@@ -11,13 +11,17 @@
   );
 }
 
-.mc-home__card {
-  background: radial-gradient(
-    circle at 60% bottom,
-    oklch(59.91% 0.239 8.14) 20%,
-    oklch(53.18% 0.28 296.97) 100%
-  );
-  border-radius: 20px;
-  padding: 20px;
-  color: var(--vp-button-brand-text);
+.VPFeatures .item {
+  width: 100% !important;
+}
+
+.VPFeatures .items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  .VPFeatures .items {
+    grid-template-columns: 1fr;
+  }
 }
