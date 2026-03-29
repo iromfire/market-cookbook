@@ -1,16 +1,21 @@
 # API <Badge type="warning" text="Не подтверждено командой" />
 
-Взаимодействий с сервером
+> Взаимодействий с BE
 
-## HTTP
-
-✅ Обсуждай с BE контракты перед тем, как приступать к реализации задачи
+## HTTP (Fetch/XHR в DevTools)
 
 ✅ Работай через сгенерированные репозитории, модели и enum'ы из `@ui-api`
 
+```
+@ui-api/
+├── repositories/
+├── models/
+└── enums/
+```
+
 ✅ Используй нейминг BE, не придумывай свой
 
-❌ Не описывай API вручную
+❌ Не описывай API вручную. Создавай свои модели и enum'ы в крайнем случае
 
 ::: tip ℹ️
 
@@ -19,22 +24,13 @@
 
 :::
 
-### Структура
-
-```
-@ui-api/
-  repositories/
-  models/
-  enums/
-```
-
 ### Обновление
 
 ```bash
 npm run swagger:sync:<stable | servicing | trunk>
 ```
 
-## WebSocket
+## WebSocket (Socket в DevTools)
 
 ✅ Взаимодействие через `NgEventBus`
 

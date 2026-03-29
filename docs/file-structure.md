@@ -1,12 +1,5 @@
 # Файловая структура <Badge type="warning" text="Не подтверждено командой" />
 
-::: warning TODO
-
-- Правила импортов до index.ts
-- Структура внутри `features/<name>`
-
-:::
-
 Следуем принципам:
 
 - **LIFT** [Angular Style Guide — LIFT](https://v17.angular.io/guide/styleguide#lift)
@@ -15,58 +8,194 @@
   - **F**lat — избегаем лишней вложенности
   - **T**ry to be DRY — не дублируем код по возможности
 - **Pages First**
-  - Основная единица структуры — UI страница (`features`), а не сущности или домены как на BE.
+  - Основная единица структуры — UI страница (или группа страниц, связанная одним смыслом), а не сущности или домены как на BE.
   - Вся логика страницы находится рядом со страницей.
-  - Общие части выносятся в `libs` или `shared` только при появлении переиспользования.
 
 ## Основные директории
 
 ### 📁 features
 
-Крупные фичи приложения, которые подключаются через **роутинг**. Обычно это **страница** или **группа связанных страниц**
+> Крупные разделы приложения, которые подключаются через **роутинг**. Обычно это **страница** или **группа связанных страниц**
 
-**Примеры:**
+**Пример:**
 
-- `procedure`
-  - `quotation-session`
-  - `single-supplier`
-  - `price-request`
+```
+features/
+├── procedure/
+│   ├── quotation-session/
+│   ├── single-supplier/
+│   ├── price-request/
+│   └── shared/
+└── companies-catalog/
+```
 
-- `companies-catalog`
+::: tip ℹ️
+Страницы можно и нужно группировать по смыслу, несмотря на то что иногда они делаются в отдельных PBI.
+Например: `user-management`: `user-list`, `add-user`, `edit-user`
+:::
 
-Страницы можно группировать по смыслу.
-Например, `user-management`: `user-list`, `add-user`, `edit-user`
+❌ Не клади feature на самый верхний уровень в `app`. Все feature должны лежать внутри `features`
+
+❌ Не импортируй одну feature в другую
+
+**Переиспользование:**
 
 - общее внутри feature → `features/<feature>/shared`
 - общее для всего проекта → `shared` или `libs`
 
-❌ Не клади feature на самый верхний уровень в app
+**Структура внутри `features/<feature>`:**
 
-❌ Не импортируй одну feature в другую
+✅ Храни связанные файлы **вместе по смыслу**, а не по типу. [Angular Style Guide — Organize by feature areas](https://angular.dev/style-guide#organize-your-project-by-feature-areas)
 
-❌ Избегай лишней и глубокой вложенности. [Angular Style Guide — Organize by feature areas](https://angular.dev/style-guide#organize-your-project-by-feature-areas)
+❌ Не разделяй код по папкам `components/`, `services/` и т.п. если это не улучшает читаемость
 
-Храни связанные файлы **вместе по фиче**, а не по типу.  
-Не разделяй код по папкам `components/`, `services/` и т.п., если это не улучшает читаемость.
+❌ Не используй деление по слоям: `domain`, `application`, `adapters`, `presentation`, `infrastructure`
+
+:::details ✅
+
+```
+procurement/
+└── pages/
+    ├── procurement-list-page/
+    │   ├── procurement-list-page.component.ts
+    │   ├── procurement-list-page.state.ts
+    │   ├── filters/
+    │   │   ├── filters.component.ts
+    │   │   ├── filters.service.ts
+    │   │   └── filters.utils.ts
+    │   ├── table/
+    │   │   ├── table.component.ts
+    │   │   └── table.utils.ts
+    │   └── bulk-actions/
+    │       ├── bulk-actions.component.ts
+    │       └── bulk-actions.service.ts
+    ├── procurement-create-page/
+    │   ├── procurement-create-page.component.ts
+    │   ├── procurement-create-page.state.ts
+    │   ├── type-selector/
+    │   │   ├── type-selector.component.ts
+    │   │   └── type-selector.service.ts
+    │   ├── common-form/
+    │   │   ├── common-form.component.ts
+    │   │   ├── common-form.service.ts
+    │   │   └── common-form.validators.ts
+    │   ├── goods/
+    │   │   ├── goods.component.ts
+    │   │   ├── goods.service.ts
+    │   │   ├── goods.model.ts
+    │   │   └── goods.utils.ts
+    │   ├── services/
+    │   │   ├── services.component.ts
+    │   │   ├── services.service.ts
+    │   │   └── services.model.ts
+    │   ├── tender/
+    │   │   ├── tender.component.ts
+    │   │   ├── tender.service.ts
+    │   │   └── tender.rules.ts
+    │   └── attachments/
+    │       ├── attachments.component.ts
+    │       └── attachments.service.ts
+    └── procurement-details-page/
+        ├── procurement-details-page.component.ts
+        ├── header/
+        │   └── header.component.ts
+        ├── timeline/
+        │   ├── timeline.component.ts
+        │   └── timeline.utils.ts
+        ├── participants/
+        │   ├── participants.component.ts
+        │   └── participants.service.ts
+        └── decisions/
+            ├── decisions.component.ts
+            ├── decisions.service.ts
+            └── decisions.rules.ts
+└── shared/
+    ├── procurement.model.ts
+    ├── procurement.mapper.ts
+    ├── procurement-status.utils.ts
+    └── procurement.constants.ts
+```
+
+:::
+
+:::details ❌
+
+```
+procurement/
+├── components/
+│   ├── procurement-list-page.component.ts
+│   ├── procurement-create-page.component.ts
+│   ├── procurement-details-page.component.ts
+│   ├── filters.component.ts
+│   ├── table.component.ts
+│   ├── bulk-actions.component.ts
+│   ├── type-selector.component.ts
+│   ├── common-form.component.ts
+│   ├── goods.component.ts
+│   ├── services.component.ts
+│   ├── tender.component.ts
+│   ├── attachments.component.ts
+│   ├── header.component.ts
+│   ├── timeline.component.ts
+│   ├── participants.component.ts
+│   └── decisions.component.ts
+├── services/
+│   ├── procurement-list.service.ts
+│   ├── procurement-create.service.ts
+│   ├── filters.service.ts
+│   ├── bulk-actions.service.ts
+│   ├── type-selector.service.ts
+│   ├── common-form.service.ts
+│   ├── goods.service.ts
+│   ├── services.service.ts
+│   ├── tender.service.ts
+│   ├── attachments.service.ts
+│   ├── participants.service.ts
+│   └── decisions.service.ts
+├── utils/
+│   ├── filters.utils.ts
+│   ├── table.utils.ts
+│   ├── goods.utils.ts
+│   ├── timeline.utils.ts
+│   └── procurement-status.utils.ts
+├── models/
+│   ├── procurement.model.ts
+│   ├── goods.model.ts
+│   └── services.model.ts
+├── rules/
+│   ├── tender.rules.ts
+│   └── decisions.rules.ts
+├── mappers/
+│   └── procurement.mapper.ts
+└── constants/
+    └── procurement.constants.ts
+```
+
+:::
+
+---
 
 ### 📦 libs
 
-Сюда кладем то, что **переиспользуется между страницами** и содержит **бизнес-логику**.
+> Полноценный **изолированный модуль с логикой**, который используется как отдельная внутренняя библиотека (как npm пакет) и не привязан к конкретной странице
 
-**Примеры:**
+**Пример:**
 
 - `address`
 - `okpd2`
 - `search`
 - `phone`
+- `crypto`
 
-Полноценный **изолированный модуль с логикой**, который используется как отдельная внутренняя библиотека (как npm пакет) и не привязан к конкретной странице.
+❌ Не используй деление по слоям: domain, application, adapters, presentation, infrastructure
+
+---
 
 ### 🧩 shared
 
-Сюда кладем то, что **переиспользуется между страницами** и **не имеет бизнес-логики**.
+> Переиспользуемые примитивы без доменной логики — общие элементы и утилиты, не привязанные к конкретной странице
 
-**Примеры:**
+**Пример:**
 
 - `components`
 - `utils`
@@ -95,6 +224,8 @@
 
 ## Barrel Imports (`index.ts`)
 
+### Создание
+
 Делаем **один** `index.ts` на директорию и экспортируем только то, что **используется снаружи**, скрывая внутреннюю реализацию.
 
 **Пример:**
@@ -110,3 +241,22 @@ npx tsx scripts/replace-imports.ts src/app/<папка>
 ```
 
 После этого удалите неиспользуемые `index.ts`вручную
+
+### Использование
+
+Импорты выполняем только через публичный API (`index.ts`) модуля. Используем алиасы (`@shared/utils`, `@libs/phone`)
+— это сохраняет инкапсуляцию и защищает от поломок при рефакторинге.
+
+✅
+
+```ts
+import { formatDate } from "@shared/utils";
+import { parsePhone } from "@libs/phone";
+```
+
+❌
+
+```ts
+import { formatDate } from "@shared/utils/lib/date/format-date";
+import { parsePhone } from "@libs/phone/internal/parser";
+```
