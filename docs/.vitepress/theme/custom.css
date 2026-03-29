@@ -11,6 +11,10 @@
   );
 }
 
+.VPFeatures svg {
+  stroke: #6366f1;
+}
+
 .VPFeatures .item {
   width: 100% !important;
 }
