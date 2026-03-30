@@ -17,7 +17,7 @@
 
 > Крупные разделы приложения, которые подключаются через **роутинг**. Обычно это **страница** или **группа связанных страниц**
 
-**Пример:**
+#### Пример:
 
 ```
 features/
@@ -38,12 +38,12 @@ features/
 
 ❌ Не импортируй одну feature в другую
 
-**Переиспользование:**
+#### Переиспользование:
 
 - общее внутри feature → `features/<feature>/shared`
 - общее для всего проекта → `shared` или `libs`
 
-**Структура внутри `features/<feature>`:**
+#### Структура внутри `features/<feature>`:
 
 ✅ Храни связанные файлы **вместе по смыслу**, а не по типу. [Angular Style Guide — Organize by feature areas](https://angular.dev/style-guide#organize-your-project-by-feature-areas)
 
@@ -55,60 +55,62 @@ features/
 
 ```
 procurement/
-└── pages/
-    ├── procurement-list-page/
-    │   ├── procurement-list-page.component.ts
-    │   ├── procurement-list-page.state.ts
-    │   ├── filters/
-    │   │   ├── filters.component.ts
-    │   │   ├── filters.service.ts
-    │   │   └── filters.utils.ts
-    │   ├── table/
-    │   │   ├── table.component.ts
-    │   │   └── table.utils.ts
-    │   └── bulk-actions/
-    │       ├── bulk-actions.component.ts
-    │       └── bulk-actions.service.ts
-    ├── procurement-create-page/
-    │   ├── procurement-create-page.component.ts
-    │   ├── procurement-create-page.state.ts
-    │   ├── type-selector/
-    │   │   ├── type-selector.component.ts
-    │   │   └── type-selector.service.ts
-    │   ├── common-form/
-    │   │   ├── common-form.component.ts
-    │   │   ├── common-form.service.ts
-    │   │   └── common-form.validators.ts
-    │   ├── goods/
-    │   │   ├── goods.component.ts
-    │   │   ├── goods.service.ts
-    │   │   ├── goods.model.ts
-    │   │   └── goods.utils.ts
-    │   ├── services/
-    │   │   ├── services.component.ts
-    │   │   ├── services.service.ts
-    │   │   └── services.model.ts
-    │   ├── tender/
-    │   │   ├── tender.component.ts
-    │   │   ├── tender.service.ts
-    │   │   └── tender.rules.ts
-    │   └── attachments/
-    │       ├── attachments.component.ts
-    │       └── attachments.service.ts
-    └── procurement-details-page/
-        ├── procurement-details-page.component.ts
-        ├── header/
-        │   └── header.component.ts
-        ├── timeline/
-        │   ├── timeline.component.ts
-        │   └── timeline.utils.ts
-        ├── participants/
-        │   ├── participants.component.ts
-        │   └── participants.service.ts
-        └── decisions/
-            ├── decisions.component.ts
-            ├── decisions.service.ts
-            └── decisions.rules.ts
+├── procurement-list-page/
+│   ├── procurement-list-page.component.ts
+│   ├── procurement-list-page.state.ts
+│   ├── filters/
+│   │   ├── filters.component.ts
+│   │   ├── filters.service.ts
+│   │   └── filters.utils.ts
+│   ├── table/
+│   │   ├── table.component.ts
+│   │   └── table.utils.ts
+│   └── bulk-actions/
+│       ├── bulk-actions.component.ts
+│       └── bulk-actions.service.ts
+
+├── procurement-create-page/
+│   ├── procurement-create-page.component.ts
+│   ├── procurement-create-page.state.ts
+│   ├── type-selector/
+│   │   ├── type-selector.component.ts
+│   │   └── type-selector.service.ts
+│   ├── common-form/
+│   │   ├── common-form.component.ts
+│   │   ├── common-form.service.ts
+│   │   └── common-form.validators.ts
+│   ├── goods/
+│   │   ├── goods.component.ts
+│   │   ├── goods.service.ts
+│   │   ├── goods.model.ts
+│   │   └── goods.utils.ts
+│   ├── services/
+│   │   ├── services.component.ts
+│   │   ├── services.service.ts
+│   │   └── services.model.ts
+│   ├── tender/
+│   │   ├── tender.component.ts
+│   │   ├── tender.service.ts
+│   │   └── tender.rules.ts
+│   └── attachments/
+│       ├── attachments.component.ts
+│       └── attachments.service.ts
+
+├── procurement-details-page/
+│   ├── procurement-details-page.component.ts
+│   ├── header/
+│   │   └── header.component.ts
+│   ├── timeline/
+│   │   ├── timeline.component.ts
+│   │   └── timeline.utils.ts
+│   ├── participants/
+│   │   ├── participants.component.ts
+│   │   └── participants.service.ts
+│   └── decisions/
+│       ├── decisions.component.ts
+│       ├── decisions.service.ts
+│       └── decisions.rules.ts
+
 └── shared/
     ├── procurement.model.ts
     ├── procurement.mapper.ts
@@ -173,6 +175,22 @@ procurement/
 
 :::
 
+#### Импорты в рамках одной feature:
+
+✅ Используй относительные пути, когда работаешь с файлами внутри одной feature
+
+```ts
+import { UserCardComponent } from "../ui/user-card.component";
+import { UserService } from "../data/user.service";
+```
+
+❌ Не используй абсолютный импорт внутри той же feature
+
+```ts
+import { UserCardComponent } from "@root/features/user/ui/user-card.component";
+import { UserService } from "@root/features/user/data/user.service";
+```
+
 ---
 
 ### 📦 libs
@@ -187,7 +205,7 @@ procurement/
 - `phone`
 - `crypto`
 
-❌ Не используй деление по слоям: domain, application, adapters, presentation, infrastructure
+❌ Не используй деление по слоям: `domain`, `application`, `adapters`, `presentation`, `infrastructure`
 
 ---
 
@@ -260,3 +278,14 @@ import { parsePhone } from "@libs/phone";
 import { formatDate } from "@shared/utils/lib/date/format-date";
 import { parsePhone } from "@libs/phone/internal/parser";
 ```
+
+## Куда положить файл?
+
+| Уровень           | Папка                 | Вопрос для размещения                          | Примеры                                                       |
+| ----------------- | --------------------- | ---------------------------------------------- | ------------------------------------------------------------- |
+| **Блок**          | `feature/page/block/` | Нужно только этому UI блоку?                   | `order-form.validators.ts`, `orders-filter.utils.ts`          |
+| **Страница**      | `feature/page/`       | Нужно нескольким блокам одной страницы?        | `order-create-page.usecase.ts`                                |
+| **Feature**       | `feature/shared/`     | Нужно нескольким страницам фичи?               | `orders.store.ts`, `orders.service.ts`, `order-status-badge/` |
+| **Бизнес-логика** | `libs/`               | Нужно нескольким фичам, но это логика?         | `crypto.service.ts`, `Okpd2SelectorComponnent`                |
+| **UI / Утилиты**  | `shared/`             | Нужно нескольким фичам, но это UI или утилита? | `ButtonComponent`, `date.utils.ts`, `pipes`                   |
+| **Приложение**    | `core/`               | Singleton на всё приложение?                   | `auth.interceptor.ts`, `error-handler.service.ts`             |
