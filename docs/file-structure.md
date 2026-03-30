@@ -258,7 +258,7 @@ import { UserService } from "@root/features/user/data/user.service";
 npx tsx scripts/replace-imports.ts src/app/<папка>
 ```
 
-После этого удалите неиспользуемые `index.ts`вручную
+После этого удалите неиспользуемые `index.ts` вручную
 
 ### Использование
 
