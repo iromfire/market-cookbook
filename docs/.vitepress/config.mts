@@ -44,6 +44,7 @@ export default defineConfig({
           { text: "Модальные окна", link: "/recipes/modal" },
           { text: "Загрузка и скелетоны", link: "/recipes/loading" },
           { text: "Каталог", link: "/recipes/catalog" },
+          { text: "Капча", link: "/recipes/captcha" },
         ],
       },
     ],
