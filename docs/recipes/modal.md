@@ -57,3 +57,9 @@ this._overlayService.openDialog(EisYearlyPaymentDialogComponent, {
 - `rts-dialog-footer--divided`
 
 ❌ Не пиши стили сам
+
+## Готовые решения
+
+::: warning TODO
+Описать готовые модальные окна для "Да/Нет" и т.п.
+:::
