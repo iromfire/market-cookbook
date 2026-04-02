@@ -8,6 +8,7 @@ export default defineConfig({
   head: [["link", { rel: "icon", href: `${base}favicon.svg` }]],
   title: "Market Cookbook",
   description: "Как мы пишем код",
+  cleanUrls: true,
   themeConfig: {
     nav: [
       { text: "Главная", link: "/" },
