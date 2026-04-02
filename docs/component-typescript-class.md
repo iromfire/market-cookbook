@@ -46,7 +46,7 @@
 - `afterEveryRender`
 - `afterNextRender`
 
-### Альтернативы
+✅ Альтернативы
 
 - инициализировать компонент в `constructor`, вместо `ngOnInit`
 - `computed()` и `effect()`

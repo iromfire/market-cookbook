@@ -1,4 +1,4 @@
-# Сервис
+# Сервис <Badge type="warning" text="Не подтверждено командой" />
 
 ## Stateless
 

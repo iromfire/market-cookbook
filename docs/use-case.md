@@ -24,16 +24,7 @@ Use Case — это законченный пользовательский сц
 - `Login`
 - `RegisterUser`
 
----
-
-❌ Не превращай Use Case в утилиты или низкоуровневые операции:
-
-- `Validate...`
-- `Get...`
-- `Calculate...`
-- `IsSomething...`
-
-## Пример
+**Пример:**
 
 ```ts
 export class SignContractUseCase implements UseCase<
@@ -63,7 +54,16 @@ export class SignContractUseCase implements UseCase<
 }
 ```
 
-## Антипаттерн
+---
+
+❌ Не превращай Use Case в утилиты или низкоуровневые операции:
+
+- `Validate...`
+- `Get...`
+- `Calculate...`
+- `IsSomething...`
+
+**Пример:**
 
 ```ts
 export class IsCertificateValidUseCase implements UseCase<
@@ -81,7 +81,7 @@ export class IsCertificateValidUseCase implements UseCase<
 }
 ```
 
-Такие вещи выносятся в domain util или сервис:
+Такие вещи выносятся в утилиты или сервис:
 
 ```ts
 export const isCertificateValid = (cert: Certificate): boolean =>

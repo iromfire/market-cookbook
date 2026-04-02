@@ -77,11 +77,13 @@
 
 ✅ Используй встроенный control flow
 
+<!-- prettier-ignore-start -->
 ```html
 @for (item of items; track item.id) {
-<div>{{ item.name }}</div>
+  <div>{{ item.name }}</div>
 }
 ```
+<!-- prettier-ignore-end -->
 
 ❌ Не используй структурные директивы
 
@@ -93,19 +95,23 @@
 
 ✅ Управляй отображением на уровне родителя
 
+<!-- prettier-ignore-start -->
 ```html
 @if (user) {
-<app-profile />
+  <app-profile />
 }
 ```
+<!-- prettier-ignore-end -->
 
 ❌ Не перекладывай это на дочерний
 
+<!-- prettier-ignore-start -->
 ```html
 @if (user) {
-<div>Component html...</div>
+  <div>Component html...</div>
 }
 ```
+<!-- prettier-ignore-end -->
 
 ## Локальные переменные
 
@@ -114,12 +120,12 @@
 <!-- prettier-ignore-start -->
 ```html
 @if (order().customer.primaryAddress; as address) {
-<div>{{ address.city }}</div>
-<div>{{ address.street }}</div>
-<div>{{ address.postalCode }}</div>
+  <div>{{ address.city }}</div>
+  <div>{{ address.street }}</div>
+  <div>{{ address.postalCode }}</div>
 
-@if (address.country === 'DE') {
-<span>🇩🇪 Germany</span>
+  @if (address.country === 'DE') {
+    <span>🇩🇪 Germany</span>
   } 
 }
 ```
@@ -127,15 +133,17 @@
 
 ❌ Не дублируй доступ к одним и тем же данным
 
+<!-- prettier-ignore-start -->
 ```html
 <div>{{ order().customer.primaryAddress.city }}</div>
 <div>{{ order().customer.primaryAddress.street }}</div>
 <div>{{ order().customer.primaryAddress.postalCode }}</div>
 
 @if (order().customer.primaryAddress.country === 'DE') {
-<span>🇩🇪 Germany</span>
+  <span>🇩🇪 Germany</span>
 }
 ```
+<!-- prettier-ignore-end -->
 
 ## Ссылки vs кнопки
 

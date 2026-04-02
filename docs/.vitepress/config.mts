@@ -32,7 +32,18 @@ export default defineConfig({
           { text: "Use Case", link: "/use-case" },
           { text: "API", link: "/api" },
           { text: "Code Style", link: "/code-style" },
-          { text: "DI", link: "/code-style" },
+          { text: "DI", link: "/dependency-injection" },
+        ],
+      },
+
+      {
+        items: [
+          { text: "Таблица", link: "/recipes/table" },
+          { text: "Файлы", link: "/recipes/files" },
+          { text: "Электронная подпись", link: "/recipes/crypto" },
+          { text: "Модальные окна", link: "/recipes/modal" },
+          { text: "Загрузка и скелетоны", link: "/recipes/loading" },
+          { text: "Каталог", link: "/recipes/catalog" },
         ],
       },
     ],
