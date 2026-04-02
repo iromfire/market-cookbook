@@ -17,16 +17,20 @@ this._overlayService.openDialog(EisYearlyPaymentDialogComponent, {
 ```
 
 ::: tip ℹ️
+
 Компонент должен наследоваться от `DialogComponent` из `@rts/uikit`
 
 В классе будут доступны:
 
 - `data` — данные, переданные при открытии (только в `ngOnInit`)
 - `close()` — метод закрытия, который может принимать данные
-  :::
+
+:::
 
 ::: tip ℹ️
+
 Для открытия в формате сайдбара используй метод `openSidebar`
+
 :::
 
 ❌ Не используй `NgbModal`, `DialogService`, `p-dialog`
@@ -61,5 +65,7 @@ this._overlayService.openDialog(EisYearlyPaymentDialogComponent, {
 ## Готовые решения
 
 ::: warning TODO
+
 Описать готовые модальные окна для "Да/Нет" и т.п.
+
 :::

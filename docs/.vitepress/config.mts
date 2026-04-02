@@ -41,7 +41,7 @@ export default defineConfig({
           { text: "Таблица", link: "/recipes/table" },
           { text: "Файлы", link: "/recipes/files" },
           { text: "Электронная подпись", link: "/recipes/crypto" },
-          { text: "Модальное окна", link: "/recipes/modal" },
+          { text: "Модальное окно", link: "/recipes/modal" },
           { text: "Загрузка и скелетоны", link: "/recipes/loading" },
           { text: "Каталог", link: "/recipes/catalog" },
           { text: "Капча", link: "/recipes/captcha" },
