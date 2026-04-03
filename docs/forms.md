@@ -119,6 +119,8 @@ form.controls.description.setValue(article.description);
 
 ✅ Используй утилиты
 
+- Не блокируй кнопку. Используй `touchAndValidityAll` чтобы подсветить все навалидные поля. Используй `scrollToFirstInvalidControl` чтобы проскроллить к невалидному полю
+
 - `withRequiredIf `
 
 ```ts
@@ -131,7 +133,7 @@ snils: this._formBuilder.control(organization.snils, {
 ```
 
 - `isControlRequired`
-- `touchAndValidityAll` – используется перед отправкой формы
+
 - Если у контрола может быть несколько видов ошибок создай утилиту `makeSomeControlErrorMessage`
 
 ```ts
