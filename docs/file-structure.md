@@ -38,20 +38,106 @@ features/
 
 ❌ Не импортируй одну feature в другую
 
+---
+
 #### Переиспользование:
 
 - общее внутри feature → `features/<feature>/shared`
 - общее для всего проекта → `shared` или `libs`
 
+---
+
 #### Структура внутри `features/<feature>`:
 
 ✅ Храни связанные файлы **вместе по смыслу**, а не по типу. [Angular Style Guide — Organize by feature areas](https://angular.dev/style-guide#organize-your-project-by-feature-areas)
 
-❌ Не разделяй код по папкам `components/`, `services/` и т.п. если это не улучшает читаемость
+✅ Держи структуру плоской до тех пор, пока это возможно
+
+**Когда делим:**
+
+- 7 элементов внутри папки → **ОБЯЗАТЕЛЬНО** делим на подпапки (папка тоже считается как элемент)
+
+**Как делим:**
+
+- 📌 **Основной и обязательный способ** — группировка по смыслу
+- 🚫 Деление на `components` / `services` и т.п. **запрещено по умолчанию**
+- ⚠️ Разрешено **только если невозможно адекватно выделить смысловые группы** (скорее всего стоит пересмотреть структуру и границы)
+
+:::details Пример
+
+В папке стало больше **7** элементов (10), надо создавать подпапки
+
+```
+organization-page/
+├── organization-page.component.ts
+├── organization-page.component.html
+├── organization-page.component.scss
+├── organization-form.service.ts
+├── organization-inn-kpp-async.validator.ts
+├── passport-form.service.ts
+├── individual-entrepreneur-about-block/
+├── judicial-person-about-block/
+├── physical-person-about-block/
+└── passport-block/
+```
+
+❌ Деление по типу
+
+```
+organization-page/
+├── organization-page.component.ts
+├── organization-page.component.html
+├── organization-page.component.scss
+├── components/
+│   ├── individual-entrepreneur-about-block/
+│   ├── judicial-person-about-block/
+│   ├── passport-block/
+│   └── physical-person-about-block/
+├── services/
+│   ├── organization-form.service.ts
+│   └── passport-form.service.ts
+└── inn-kpp-async.validator.ts
+```
+
+✅ Деление по смыслу
+
+```
+organization-page/
+├── organization-page.component.ts
+├── organization-page.component.html
+├── organization-page.component.scss
+├── organization/
+│   ├── individual-entrepreneur-about-block/
+│   ├── judicial-person-about-block/
+│   ├── physical-person-about-block/
+│   ├── organization-form.service.ts
+│   └── inn-kpp-async.validator.ts
+└── passport/
+    ├── passport-block/
+    └── passport-form.service.ts
+```
+
+:::
+
+---
 
 ❌ Не используй деление по слоям: `domain`, `application`, `adapters`, `presentation`, `infrastructure`
 
-:::details ✅
+---
+
+##### Итого пример структуры
+
+✅
+
+```
+procurement/
+├── procurement-list-page/
+├── procurement-create-page/
+├── procurement-details-page/
+└── shared/
+```
+
+:::details Смотреть полностью
 
 ```
 procurement/
@@ -120,7 +206,20 @@ procurement/
 
 :::
 
-:::details ❌
+❌
+
+```
+procurement/
+├── components/
+├── services/
+├── utils/
+├── models/
+├── rules/
+├── mappers/
+└── constants/
+```
+
+:::details Смотреть полностью
 
 ```
 procurement/
@@ -174,6 +273,8 @@ procurement/
 ```
 
 :::
+
+---
 
 #### Импорты в рамках одной feature:
 
