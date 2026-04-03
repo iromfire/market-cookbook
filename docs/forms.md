@@ -14,8 +14,8 @@ type ArticleForm = FormGroup<{
 export class ArticleFormService extends AbstractFormService<ArticleForm, void> {
   init(): ArticleForm {
     this._form = this._formBuilder.group({
-      title: this._formBuilder.nonNullable.control(""),
-      description: this._formBuilder.nonNullable.control(""),
+      title: this._formBuilder.nonNullable.control(''),
+      description: this._formBuilder.nonNullable.control(''),
     });
 
     return this._form;
@@ -50,7 +50,7 @@ export class ArticleFormService extends AbstractFormService<ArticleForm, void> {
 ❌ Не выноси если форма содержит одно поле, создай контрол в компоненте
 
 ```ts
-searchControl = new FormControl("", { nonNullable: true });
+searchControl = new FormControl('', { nonNullable: true });
 ```
 
 ---
@@ -109,9 +109,7 @@ form.controls.description.setValue(article.description);
     rtsInputEmailAddress
     [required]="true"
   />
-  <rts-cdk-error>
-    {{ makeEmailErrorMessage(organizationForm.controls.email) }}
-  </rts-cdk-error>
+  <rts-cdk-error> {{ makeEmailErrorMessage(organizationForm.controls.email) }} </rts-cdk-error>
 </rts-cdk-form-field>
 ```
 
@@ -138,12 +136,12 @@ snils: this._formBuilder.control(organization.snils, {
 
 ```ts
 export const makeEmailErrorMessage = (control: FormControl): string | null => {
-  if (control.hasError("required")) {
-    return "Укажите адрес электронной почты. Пример: example@company.ru";
+  if (control.hasError('required')) {
+    return 'Укажите адрес электронной почты. Пример: example@company.ru';
   }
 
-  if (control.hasError("pattern")) {
-    return "Пожалуйста, введите корректный адрес электронной почты. Пример: example@company.ru";
+  if (control.hasError('pattern')) {
+    return 'Пожалуйста, введите корректный адрес электронной почты. Пример: example@company.ru';
   }
 
   return null;

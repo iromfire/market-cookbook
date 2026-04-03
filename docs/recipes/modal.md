@@ -11,8 +11,8 @@ this._overlayService.openDialog(EisYearlyPaymentDialogComponent, {
     toYear,
     contractPrice,
   },
-  title: "Сведения об объемах оплаты долгосрочного договора",
-  width: "640px",
+  title: 'Сведения об объемах оплаты долгосрочного договора',
+  width: '640px',
 });
 ```
 

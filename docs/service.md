@@ -11,7 +11,7 @@ export class OrderService {
   }
 
   confirm(order: Order) {
-    return this.http.post("/api/confirm", order); // ✅ явные данные
+    return this.http.post('/api/confirm', order); // ✅ явные данные
   }
 }
 ```
@@ -29,7 +29,7 @@ export class OrderService {
   }
 
   confirm() {
-    return this.http.post("/api/confirm", this._order()); // ❌ скрытая зависимость
+    return this.http.post('/api/confirm', this._order()); // ❌ скрытая зависимость
   }
 }
 ```
@@ -54,7 +54,7 @@ export class UserService {
   private readonly _user = signal<User | null>(null);
 
   loadUser(): void {
-    this.http.get<User>("/api/user").subscribe((user) => this._user.set(user));
+    this.http.get<User>('/api/user').subscribe((user) => this._user.set(user));
   }
 }
 ```
@@ -66,7 +66,7 @@ export class UserService {
   private readonly http = inject(HttpClient);
 
   loadUser() {
-    return this.http.get<User>("/api/user");
+    return this.http.get<User>('/api/user');
   }
 }
 

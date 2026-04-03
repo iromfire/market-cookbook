@@ -156,9 +156,7 @@
 ❌ Не делай навигацию через `<button>`
 
 ```html
-<button rtsPrimaryButton (click)="router.navigate(['/profile'])">
-  Перейти в профиль
-</button>
+<button rtsPrimaryButton (click)="router.navigate(['/profile'])">Перейти в профиль</button>
 ```
 
 ✅ Используй `<button>` для действий (даже если выглядит как ссылка)

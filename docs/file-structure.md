@@ -281,15 +281,15 @@ procurement/
 ✅ Используй относительные пути, когда работаешь с файлами внутри одной feature
 
 ```ts
-import { UserCardComponent } from "../ui/user-card.component";
-import { UserService } from "../data/user.service";
+import { UserCardComponent } from '../ui/user-card.component';
+import { UserService } from '../data/user.service';
 ```
 
 ❌ Не используй абсолютный импорт внутри той же feature
 
 ```ts
-import { UserCardComponent } from "@root/features/user/ui/user-card.component";
-import { UserService } from "@root/features/user/data/user.service";
+import { UserCardComponent } from '@root/features/user/ui/user-card.component';
+import { UserService } from '@root/features/user/data/user.service';
 ```
 
 ---
@@ -369,15 +369,15 @@ npx tsx scripts/replace-imports.ts src/app/<папка>
 ✅
 
 ```ts
-import { formatDate } from "@shared/utils";
-import { parsePhone } from "@libs/phone";
+import { formatDate } from '@shared/utils';
+import { parsePhone } from '@libs/phone';
 ```
 
 ❌
 
 ```ts
-import { formatDate } from "@shared/utils/lib/date/format-date";
-import { parsePhone } from "@libs/phone/internal/parser";
+import { formatDate } from '@shared/utils/lib/date/format-date';
+import { parsePhone } from '@libs/phone/internal/parser';
 ```
 
 ## Куда положить файл?

@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Market Cookbook"
-  text: "Как мы пишем код"
+  name: 'Market Cookbook'
+  text: 'Как мы пишем код'
   tagline: Попытка собрать все знания в документации, а не в голове и комментариях к Pull Request
   actions:
     - theme: brand

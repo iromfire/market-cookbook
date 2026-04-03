@@ -40,7 +40,7 @@ export class SignContractUseCase implements UseCase<
     return this._contractRepo.getById(contractId).pipe(
       switchMap((contract) => {
         if (!isCertificateValid(cert)) {
-          return throwError(() => new Error("Invalid certificate"));
+          return throwError(() => new Error('Invalid certificate'));
         }
 
         return this._cryptoService.sign(contract, cert);
@@ -66,10 +66,7 @@ export class SignContractUseCase implements UseCase<
 **Пример:**
 
 ```ts
-export class IsCertificateValidUseCase implements UseCase<
-  Certificate,
-  boolean
-> {
+export class IsCertificateValidUseCase implements UseCase<Certificate, boolean> {
   execute(cert: Certificate): boolean {
     return (
       !!cert &&
