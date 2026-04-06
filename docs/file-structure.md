@@ -306,6 +306,8 @@ import { UserService } from '@root/features/user/data/user.service';
 - `phone`
 - `crypto`
 
+❌ Не используй `contexts`. Он `deprecated`
+
 ❌ Не используй деление по слоям: `domain`, `application`, `adapters`, `presentation`, `infrastructure`
 
 ---
