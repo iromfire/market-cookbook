@@ -46,6 +46,7 @@ export default defineConfig({
           { text: 'Загрузка и скелетоны', link: '/recipes/loading' },
           { text: 'Каталог', link: '/recipes/catalog' },
           { text: 'Капча', link: '/recipes/captcha' },
+          { text: 'Табы', link: '/recipes/tabs' },
         ],
       },
     ],

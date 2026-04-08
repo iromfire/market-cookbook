@@ -2,13 +2,23 @@
 
 ## Переменные
 
-✅ Используй CSS-переменные из UI Kit для:
+✅ Используй CSS-переменные из UI Kit (`base-variables.scss`) для:
 
 - цветов
 - типографики
 - отступов
 - скруглений
 - теней
+
+```css
+.card {
+  background: var(--rts-bg-secondary);
+  font: var(--rts-font-text-m);
+  padding: var(--rts-spacing-m);
+  border-radius: var(--rts-radius-m);
+  box-shadow: var(--rts-shadow-m);
+}
+```
 
 ❌ Не хардкодь значения
 
