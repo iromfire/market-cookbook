@@ -193,4 +193,24 @@
 <span rts-at="userBalance">100 ₽</span>
 ```
 
+- Ссылки
+
+```html
+<a rtsSecondaryButton [href]="environment.Poa.ServiceUrl" rts-at="generatePoaLink">
+  Сформировать доверенность
+</a>
+```
+
+- Тултипы
+
+```html
+<rts-tooltip-manual
+  rtsTooltipManualHover
+  text="Закупка является процедурой торг за единицу товара"
+  rts-at="isUnitBiddingTooltip"
+>
+  ...Content
+</rts-tooltip-manual>
+```
+
 ✅ Используй camelCase для нейминга
