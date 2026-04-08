@@ -170,3 +170,27 @@
 ```html
 <a rtsDarkLink (click)="onLogout()"> Выйти </a>
 ```
+
+## Автотесты
+
+✅ Добавляй `rts-at` на:
+
+- Контролы формы
+
+```html
+<rts-password rts-at="passwordControl" />
+```
+
+- Ключевые действия
+
+```html
+<button rtsPrimaryButton rts-at="deleteUserButton">Удалить</button>
+```
+
+- Важные данные
+
+```html
+<span rts-at="userBalance">100 ₽</span>
+```
+
+✅ Используй camelCase для нейминга
