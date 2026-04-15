@@ -1,4 +1,4 @@
-# Загрузка и скелетоны <Badge type="tip" text="Согласовано с дизайнером" />
+# Загрузка и скелетоны <Badge type="warning" text="Не подтверждено командой" /> <Badge type="tip" text="Подтверждено дизайнером" />
 
 Выбор типа индикатора загрузки зависит от предсказуемости структуры данных
 
@@ -13,16 +13,44 @@
 - Не требуется скелетонить весь экран — 2–3 характерных блока достаточно
 - Цель — помочь пользователю быстрее сформировать представление о будущем контенте
 
-### Пример
+### Как это выглядит
 
 ![Skeleton](./skeleton.png)
 
-### Пример реализации skeleton
+### Пример реализации
 
-Зеленым выделены будущие скелетоны, белая подложка нужна
+Зеленым выделены будущие скелетоны
+
+❌ Не игнорируй фон из макета (например, белую подложку)
 
 ![How to skeleton](./how-to-skeleton.png)
 
-## Spinner
+✅ Используй класс `rts-skeleton` из UI Kit
+
+```html
+<app-page-section>
+  <div class="rts-skeleton title"></div>
+
+  <div class="row">
+    <div class="rts-skeleton"></div>
+    <div class="rts-skeleton"></div>
+    <div class="rts-skeleton"></div>
+  </div>
+
+  <div class="row">
+    <div class="rts-skeleton"></div>
+    <div class="rts-skeleton"></div>
+    <div class="rts-skeleton"></div>
+  </div>
+</app-page-section>
+```
+
+## Preloader
 
 Используется, если структура данных заранее неизвестна или может значительно отличаться
+
+::: warning TODO
+
+Добавить примеры кода
+
+:::
