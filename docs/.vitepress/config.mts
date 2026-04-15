@@ -47,6 +47,7 @@ export default defineConfig({
           { text: 'Каталог', link: '/recipes/catalog' },
           { text: 'Капча', link: '/recipes/captcha' },
           { text: 'Табы', link: '/recipes/tabs' },
+          { text: 'Сборка страницы', link: '/recipes/page-layout' },
         ],
       },
     ],
