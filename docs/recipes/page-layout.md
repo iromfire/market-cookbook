@@ -38,7 +38,7 @@
   <app-page-title headerTitle="Header 1" />
 
   <app-page-content>
-    <div pageContentMain="sections">
+    <div pageContentMain variant="sections">
       <app-page-section>
         <app-page-section-title>Header</app-page-section-title>
 

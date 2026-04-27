@@ -2,11 +2,17 @@
 
 ## С роутингом
 
-✅ Используй нативное поведение ссылки `a` с `routerLink `
+✅ Используй нативное поведение ссылки `a` с `routerLink `.
 
 ❌ Не пытайся использовать `rts-tab` с `routerLink `
 
 ❌ Не используй `getActiveTabIndexFromUrl `
+
+::: tip ℹ️
+
+[Подробнее о данном подходе](https://v18.angular.dev/guide/components/selectors#when-to-use-an-attribute-selector)
+
+:::
 
 **Пример:**
 
