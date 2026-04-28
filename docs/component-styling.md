@@ -20,6 +20,12 @@
 }
 ```
 
+::: tip ℹ️
+
+Чтобы быстро найти переменную из UI Kit (например цвет по hex из Figma), ищи по значению в `node_modules`.
+
+:::
+
 ❌ Не хардкодь значения
 
 ❌ Не используй SCSS-переменные
@@ -32,18 +38,39 @@
 
 ❌ Не задавай фиксированную ширину без необходимости. Верстка должна быть резиновой
 
+❌ Не используй отрицательные отступы `margin: -...`
+
 ## Структура стилей
 
-✅ Минимальная вложенность
+✅ Используй упрощенный БЭМ
 
-✅ Используй селекторы по классу
+- Формат: `block-element` и `block-element--modifier`
+- Минимальная вложенность
+- Имена классов должны быть осмысленными (по [Google CSS Style Rules](https://google.github.io/styleguide/htmlcssguide.html#CSS_Style_Rules))
 
-❌ Не используй:
+```scss
+.rts-dialog {
+  &-header {
+  }
 
-- БЭМ
-- селекторы по тегу (`div`, `span`)
+  &-body {
+  }
+
+  &-footer {
+    &--divided {
+    }
+
+    &--center {
+    }
+  }
+}
+```
+
+❌ Не используй
+
+- Селекторы по тегу (`div`, `span`)
 - `id` селекторы
-- сложные селекторы
+- Сложные селекторы
 
 ```css
 .a .b > div span {
@@ -104,17 +131,17 @@
 ✅ Выноси в компонент дублирующиеся стили
 
 ```html
-<ui-status type="success">Active</ui-status>
-<ui-status type="error">Failed</ui-status>
-<ui-status type="warning">Pending</ui-status>
+<ui-status variant="success">Active</ui-status>
+<ui-status variant="error">Failed</ui-status>
+<ui-status variant="warning">Pending</ui-status>
 ```
 
 ❌ Не дублируй классы
 
 ```html
-<div class="status status-success">Active</div>
-<div class="status status-error">Failed</div>
-<div class="status status-warning">Pending</div>
+<div class="status status--success">Active</div>
+<div class="status status--error">Failed</div>
+<div class="status status--warning">Pending</div>
 ```
 
 ## Глобальные стили
