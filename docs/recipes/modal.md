@@ -64,8 +64,31 @@ this._overlayService.openDialog(EisYearlyPaymentDialogComponent, {
 
 ## Готовые решения
 
-::: warning TODO
+✅ Для подтверждения действий и запроса данных (например, при отказе от договора, закупки и т.п.) используй `InteractionService`
 
-Описать готовые модальные окна для "Да/Нет" и т.п.
+```ts
+@Component({
+  // ...
+})
+export class ActionsComponent {
+  private readonly _interactionService = inject(InteractionService);
 
-:::
+  deleteRecord(): void {
+    this._interactionService.confirm('Удалить запись?').subscribe((confirmed) => {
+      if (confirmed) {
+        // ...
+      }
+    });
+  }
+
+  rejectContract(): void {
+    this._interactionService
+      .prompt('Укажите причину', { messageLabel: 'Причина' })
+      .subscribe((reason) => {
+        // ...
+      });
+  }
+}
+```
+
+❌ Не собирай подобные диалоги вручную через `OverlayService`
