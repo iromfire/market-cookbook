@@ -88,6 +88,46 @@ export const isCertificateValid = (cert: Certificate): boolean =>
   !cert.revokedList.includes(cert.serialNumber);
 ```
 
+---
+
+✅ Весь флоу должен быть в одном Use Case
+
+```ts
+// Component
+submit(): void {
+  this.useCase.execute().subscribe();
+}
+
+// Use Case
+execute(): Observable<void> {
+  return this.dialogService.open(...).afterClosed().pipe(
+    filter(Boolean),
+    switchMap(() => this.repository.save(...))
+  );
+}
+```
+
+❌ Не разрывай один бизнес-флоу между компонентом, сервисом и Use Case
+
+```ts
+// Component
+submit(): void {
+  this.dialogService.open(...);
+}
+
+// Service
+confirm(): Observable<void> {
+  return this.dialogService.afterClosed().pipe(
+    switchMap(() => this.useCase.save())
+  );
+}
+
+// Use Case
+save(): Observable<void> {
+  return this.repository.save(...);
+}
+```
+
 ## Критерий проверки
 
 Если Use Case нельзя описать как:

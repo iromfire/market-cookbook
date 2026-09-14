@@ -27,6 +27,16 @@ export class ArticleFormService extends AbstractFormService<ArticleForm, void> {
 
 ---
 
+✅ Используй тип формы для получения типа её значения
+
+```ts
+type ArticleFormValue = ReturnType<ArticleForm['getRawValue']>;
+```
+
+❌ Не описывай тип значения формы вручную
+
+---
+
 Используй преимущества типизации
 
 **html:**
