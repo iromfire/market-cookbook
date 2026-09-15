@@ -13,14 +13,14 @@
 
 ## Основные директории
 
-### 📁 features
+### 📁 pages
 
 > Крупные разделы приложения, которые подключаются через **роутинг**. Обычно это **страница** или **группа связанных страниц**
 
 #### Пример:
 
-```
-features/
+```text
+pages/
 ├── procedure/
 │   ├── quotation-session/
 │   ├── single-supplier/
@@ -34,20 +34,20 @@ features/
 Например: `user-management`: `user-list`, `add-user`, `edit-user`
 :::
 
-❌ Не клади feature на самый верхний уровень в `app`. Все feature должны лежать внутри `features`
+❌ Не клади page на самый верхний уровень в `app`. Все page должны лежать внутри `pages`
 
-❌ Не импортируй одну feature в другую
+❌ Не импортируй одну page в другую
 
 ---
 
 #### Переиспользование:
 
-- общее внутри feature → `features/<feature>/shared`
+- общее внутри page → `pages/<page>/shared`
 - общее для всего проекта → `shared` или `libs`
 
 ---
 
-#### Структура внутри `features/<feature>`:
+#### Структура внутри `pages/<page>`:
 
 ✅ Храни связанные файлы **вместе по смыслу**, а не по типу. [Angular Style Guide — Organize by feature areas](https://angular.dev/style-guide#organize-your-project-by-feature-areas)
 
@@ -63,11 +63,11 @@ features/
 - 🚫 Деление на `components` / `services` и т.п. **запрещено по умолчанию**
 - ⚠️ Разрешено **только если невозможно адекватно выделить смысловые группы** (скорее всего стоит пересмотреть структуру и границы)
 
-:::details Пример
+::: details Пример
 
 В папке стало больше **7** элементов (10), надо создавать подпапки
 
-```
+```text
 organization-page/
 ├── organization-page.component.ts
 ├── organization-page.component.html
@@ -83,7 +83,7 @@ organization-page/
 
 ❌ Деление по типу
 
-```
+```text
 organization-page/
 ├── organization-page.component.ts
 ├── organization-page.component.html
@@ -101,7 +101,7 @@ organization-page/
 
 ✅ Деление по смыслу
 
-```
+```text
 organization-page/
 ├── organization-page.component.ts
 ├── organization-page.component.html
@@ -129,7 +129,7 @@ organization-page/
 
 ✅
 
-```
+```text
 procurement/
 ├── procurement-list-page/
 ├── procurement-create-page/
@@ -137,9 +137,9 @@ procurement/
 └── shared/
 ```
 
-:::details Смотреть полностью
+::: details Смотреть полностью
 
-```
+```text
 procurement/
 ├── procurement-list-page/
 │   ├── procurement-list-page.component.ts
@@ -208,7 +208,7 @@ procurement/
 
 ❌
 
-```
+```text
 procurement/
 ├── components/
 ├── services/
@@ -219,9 +219,9 @@ procurement/
 └── constants/
 ```
 
-:::details Смотреть полностью
+::: details Смотреть полностью
 
-```
+```text
 procurement/
 ├── components/
 │   ├── procurement-list-page.component.ts
@@ -276,27 +276,27 @@ procurement/
 
 ---
 
-#### Импорты в рамках одной feature:
+#### Импорты в рамках одной page:
 
-✅ Используй относительные пути, когда работаешь с файлами внутри одной feature
+✅ Используй относительные пути, когда работаешь с файлами внутри одной page
 
 ```ts
 import { UserCardComponent } from '../ui/user-card.component';
 import { UserService } from '../data/user.service';
 ```
 
-❌ Не используй абсолютный импорт внутри той же feature
+❌ Не используй абсолютный импорт внутри той же page
 
 ```ts
-import { UserCardComponent } from '@root/features/user/ui/user-card.component';
-import { UserService } from '@root/features/user/data/user.service';
+import { UserCardComponent } from '@root/pages/user/ui/user-card.component';
+import { UserService } from '@root/pages/user/data/user.service';
 ```
 
 ---
 
 ### 📦 libs
 
-> Полноценный **изолированный модуль с логикой**, который используется как отдельная внутренняя библиотека (как npm пакет) и не привязан к конкретной странице
+> Полноценный **переиспользуемый изолированный модуль с логикой**, который используется как отдельная внутренняя библиотека (как npm пакет) и не привязан к конкретной странице
 
 **Пример:**
 
@@ -314,7 +314,7 @@ import { UserService } from '@root/features/user/data/user.service';
 
 ### 🧩 shared
 
-> Переиспользуемые примитивы без доменной логики — общие элементы и утилиты, не привязанные к конкретной странице
+> Переиспользуемые между страницами примитивы без бизнес-логики
 
 **Пример:**
 
@@ -341,7 +341,7 @@ import { UserService } from '@root/features/user/data/user.service';
 
 - `shared` → базовый слой, ни от кого не зависит
 - `libs` → могут использовать `shared`
-- `features` → могут использовать `libs` и `shared`
+- `pages` → могут использовать `libs` и `shared`
 
 ## Barrel Imports (`index.ts`)
 
@@ -384,11 +384,11 @@ import { parsePhone } from '@libs/phone/internal/parser';
 
 ## Куда положить файл?
 
-| Уровень           | Папка                 | Вопрос для размещения                          | Примеры                                                       |
-| ----------------- | --------------------- | ---------------------------------------------- | ------------------------------------------------------------- |
-| **Блок**          | `feature/page/block/` | Нужно только этому UI блоку?                   | `order-form.validators.ts`, `orders-filter.utils.ts`          |
-| **Страница**      | `feature/page/`       | Нужно нескольким блокам одной страницы?        | `order-create-page.usecase.ts`                                |
-| **Feature**       | `feature/shared/`     | Нужно нескольким страницам фичи?               | `orders.store.ts`, `orders.service.ts`, `order-status-badge/` |
-| **Бизнес-логика** | `libs/`               | Нужно нескольким фичам, но это логика?         | `crypto.service.ts`, `Okpd2SelectorComponnent`                |
-| **UI / Утилиты**  | `shared/`             | Нужно нескольким фичам, но это UI или утилита? | `ButtonComponent`, `date.utils.ts`, `pipes`                   |
-| **Приложение**    | `core/`               | Singleton на всё приложение?                   | `auth.interceptor.ts`, `error-handler.service.ts`             |
+| Уровень           | Папка          | Вопрос для размещения                              | Примеры                                                       |
+| ----------------- | -------------- | -------------------------------------------------- | ------------------------------------------------------------- |
+| **Блок**          | `page/block/`  | Нужно только этому UI блоку?                       | `order-form.validators.ts`, `orders-filter.utils.ts`          |
+| **Страница**      | `page/`        | Нужно нескольким блокам одной страницы?            | `order-create-page.usecase.ts`                                |
+| **Page**          | `page/shared/` | Нужно нескольким страницам одной группы?           | `orders.store.ts`, `orders.service.ts`, `order-status-badge/` |
+| **Бизнес-логика** | `libs/`        | Нужно нескольким страницам, но это логика?         | `crypto.service.ts`, `Okpd2SelectorComponent`                 |
+| **UI / Утилиты**  | `shared/`      | Нужно нескольким страницам, но это UI или утилита? | `ButtonComponent`, `date.utils.ts`, `pipes`                   |
+| **Приложение**    | `core/`        | Singleton на всё приложение?                       | `auth.interceptor.ts`, `error-handler.service.ts`             |
